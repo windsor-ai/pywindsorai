@@ -2,6 +2,8 @@
 
 `pywindsorai` is a python package makes it easier to interact with windsor.ai's API via Python.
 
+[Windsor.ai](https://www.windsor.ai/) allows to get marketing data from any platform. It beautifully simplifies the complexity of dealing with multiple platforms, unlocking unified, valuable information in a format that matters to you. For more details checkout [onboard.windsor.ai](https://onboard.windsor.ai/).
+
 ## Features
 
 ✅ Easy access to windsor.ai APIs
