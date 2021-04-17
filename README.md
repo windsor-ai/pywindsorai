@@ -2,7 +2,7 @@
 
 `pywindsorai` is a python package makes it easy to get marketing data from any platform like facebook, google ads, bing into python.
 
-[Windsor.ai](https://www.windsor.ai/) allows to get marketing data from any platform. It beautifully simplifies the complexity of dealing with multiple platforms, unlocking unified, valuable information in a format that matters to you. For more details checkout [onboard.windsor.ai](https://onboard.windsor.ai/).
+[Windsor.ai](https://www.windsor.ai/) allows to get marketing data from any platform. It simplifies the complexity of dealing with multiple platforms, unlocking unified, valuable information in a format that matters to you. For more details checkout [onboard.windsor.ai](https://onboard.windsor.ai/).
 
 ## Features
 
@@ -11,6 +11,64 @@
 ✅ Lightweight (single dependency - [requests](https://pypi.org/project/requests/))
 
 ✅ Supports both python 2.7+ and 3
+
+## Supported marketing and platforms
+
+✅ Google Analytics
+
+✅ Google Ads
+
+✅ Facebook Ads
+
+✅ Facebook organic
+
+✅ Bing Ads
+
+✅ Linkedin Ads
+
+✅ Hubspot
+
+✅ Salesforce
+
+✅ Google search console
+
+✅ Criteo
+
+✅ Snapchat
+
+✅ Tiktok
+
+✅ Appnexus
+
+✅ Campaign Manager
+
+✅ Twitter
+
+✅ Awin
+
+✅ Adroll
+
+✅ Shopify
+
+✅ Klaviyo
+
+✅ Airtable
+
+✅ Intercom
+
+✅ Zoho
+
+✅ Idealo
+
+✅ Pinterest
+
+✅ Appsflyer
+
+✅ Adobe
+
+
+
+
 
 ## Usage
 
