@@ -17,8 +17,10 @@ class Client(object):
     def _init_session(self):
 
         session = requests.session()
-        session.headers.update({'Accept': 'application/json',
-                                'User-Agent': 'windsorai/python'})
+        session.headers.update({
+            'Accept': 'application/json',
+            'User-Agent': 'windsorai/python'
+        })
         return session
 
     def _create_api_uri(self, path):
@@ -58,7 +60,11 @@ class Client(object):
 
     # General Endpoints
 
-    def connectors(self, **params):
+    @property
+    def list_connectors(self):
+        return self._get(path="list_connectors", params={})
+
+    def connectors(self, connector="all", **params):
         """
         Get data from one of the available windsor connectors.
         https://connectors.windsor.ai/#operations-default-get_connector
@@ -71,12 +77,13 @@ class Client(object):
             orders = client.connectors(date_preset=LAST_7D, fields=[FIELD_SOURCE, FIELD_CAMPAIGN, FIELD_CLICKS])
 
         :param params:
-            date_preset - It's recommended that you use provided enums, instead of a hardcoded string. Example: LAST_7D
-            fields - List of fields. It's recommended that you use FIELD_* enums, instead of hardcoded strings. Example: [FIELD_SOURCE, FIELD_CAMPAIGN, FIELD_CLICKS].
+            connector (str): A string with the preferred connector. Default - "all"
+            date_preset (str) - It's recommended that you use provided enums, instead of a hardcoded string. Example: LAST_7D
+            fields (list) - List of fields. It's recommended that you use FIELD_* enums, instead of hardcoded strings. Example: [FIELD_SOURCE, FIELD_CAMPAIGN, FIELD_CLICKS].
         :return:
         """
 
         # Python interface is a list. Whereas the API expects a comma seperated string.
         params['fields'] = ','.join(params['fields'])
 
-        return self._get('all', params=params)
+        return self._get(connector, params=params)
