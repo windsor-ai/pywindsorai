@@ -7,7 +7,7 @@ class TestRequest(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestRequest, self).__init__(*args, **kwargs)
         self.bad_token = Client("abc-token")
-        self.good_token = Client("df7b9b3ee49ab38b121e775f86be26ca0011")
+        self.good_token = Client("")
         self.error_responses = [400, 401, 402, 403, 404]
 
     def test_fail_request(self):
