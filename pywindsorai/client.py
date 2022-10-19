@@ -13,6 +13,7 @@ class Client(object):
 
         self.API_KEY = api_key
         self.session = self._init_session()
+        self.status_code = None
 
     def _init_session(self):
 
@@ -22,6 +23,9 @@ class Client(object):
             'User-Agent': 'windsorai/python'
         })
         return session
+
+    def _close_session(self):
+        self.session.close()
 
     def _create_api_uri(self, path):
         return self.API_URL + '/' + path
@@ -43,7 +47,8 @@ class Client(object):
 
         # Any windsor.ai specific error handling can be done here
         # Nothing as such for now
-
+        self.status_code = response.status_code
+        self._close_session()
         return response.json()
 
     def _get(self, path, signed=False, **kwargs):
