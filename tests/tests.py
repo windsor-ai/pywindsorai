@@ -60,6 +60,38 @@ class TestRequest(unittest.TestCase):
         self.good_token.list_connectors
         self.assertEqual(self.good_token.status_code, 200)
 
+    def test_no_date(self):
+        _ = self.good_token.connectors(
+            connector="google_ads",
+            fields=["account_name", "campaign", "clicks", "datasource", "source", "spend"]
+        )
+        self.assertEqual(self.good_token.status_code, 200)
+
+    def test_from_date(self):
+        _ = self.good_token.connectors(
+            connector="google_ads",
+            date_from="2022-10-18",
+            fields=["account_name", "campaign", "clicks", "datasource", "source", "spend", "date"]
+        )
+        self.assertEqual(self.good_token.status_code, 200)
+
+    def test_invalid_from_date(self):
+        _ = self.good_token.connectors(
+            connector="google_ads",
+            date_from="208a",
+            fields=["account_name", "campaign", "clicks", "datasource", "source", "spend", "date"]
+        )
+        self.assertIn(self.good_token.status_code, self.error_responses)
+
+    def test_from_date(self):
+        _ = self.good_token.connectors(
+            connector="google_ads",
+            date_from="2022-10-18",
+            date_to="2022-10-20",
+            fields=["account_name", "campaign", "clicks", "datasource", "source", "spend", "date"]
+        )
+        self.assertEqual(self.good_token.status_code, 200)
+
 
 if __name__ == "__main__":
     unittest.main()
