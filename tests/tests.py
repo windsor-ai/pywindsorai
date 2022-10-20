@@ -83,7 +83,7 @@ class TestRequest(unittest.TestCase):
         )
         self.assertIn(self.good_token.status_code, self.error_responses)
 
-    def test_from_date(self):
+    def test_from_to_date(self):
         _ = self.good_token.connectors(
             connector="google_ads",
             date_from="2022-10-18",
