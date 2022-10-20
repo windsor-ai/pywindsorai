@@ -1,5 +1,11 @@
+import os
 import unittest
+
+from dotenv import load_dotenv
 from pywindsorai.client import Client
+
+
+load_dotenv()
 
 
 class TestRequest(unittest.TestCase):
@@ -7,7 +13,7 @@ class TestRequest(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestRequest, self).__init__(*args, **kwargs)
         self.bad_token = Client("abc-token")
-        self.good_token = Client("")
+        self.good_token = Client(os.environ.get("WINDSOR_TOKEN"))
         self.error_responses = [400, 401, 402, 403, 404]
 
     def test_fail_request(self):
