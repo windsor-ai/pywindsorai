@@ -31,6 +31,6 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Unit Tests
         run: |
-          python -m unittest tests/tests.py
+          python -m unittest discover test
         env:
           WINDSOR_TOKEN: ${{ secrets.WINDSOR_TOKEN }}
