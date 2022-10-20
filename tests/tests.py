@@ -1,11 +1,7 @@
 import os
 import unittest
 
-from dotenv import load_dotenv
 from pywindsorai.client import Client
-
-
-load_dotenv()
 
 
 class TestRequest(unittest.TestCase):
