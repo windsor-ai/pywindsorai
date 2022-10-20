@@ -33,11 +33,11 @@ class TestRequest(unittest.TestCase):
         self.assertGreaterEqual(len(dataset["data"]), 0)
 
     def test_random_date(self):
-        dataset = self.good_token.connectors(date_preset="lcast_7d", fields=["account_name", "campaign"])
+        _ = self.good_token.connectors(date_preset="lcast_7d", fields=["account_name", "campaign"])
         self.assertIn(self.good_token.status_code, self.error_responses)
 
     def test_google_connector(self):
-        dataset = self.good_token.connectors(
+        _ = self.good_token.connectors(
             connector="google_ads",
             date_preset="last_7d",
             fields=["account_name", "campaign", "clicks", "datasource", "source", "spend"]
@@ -45,7 +45,7 @@ class TestRequest(unittest.TestCase):
         self.assertEqual(self.good_token.status_code, 200)
 
     def test_non_existent_connector(self):
-        dataset = self.good_token.connectors(
+        _ = self.good_token.connectors(
             connector="random_connector",
             date_preset="last_7d",
             fields=["account_name", "campaign", "clicks", "datasource", "source", "spend"]
