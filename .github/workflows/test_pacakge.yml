@@ -18,6 +18,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
+        uses: haya14busa/action-cond@v1
         id: pck_install
         with:
           cond: ${{ matrix.python-version == "2.7" }}
