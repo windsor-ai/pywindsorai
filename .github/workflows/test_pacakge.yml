@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install Flake for python2
-        if: ${{ matrix.python-version >= 2.7 && matrix.python-version < 3.0 }}
+        if: ${{ matrix.python-version < 3.0 }}
         run: pip install flake8==2.6.2
       - name: Install Flake for python3
         if: ${{ matrix.python-version >= 3.0 }}
@@ -37,6 +37,7 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Unit Tests
         run: |
+          pwd [-LP]
           python -m unittest discover test
         env:
           WINDSOR_TOKEN: ${{ secrets.WINDSOR_TOKEN }}
