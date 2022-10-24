@@ -17,16 +17,14 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        uses: haya14busa/action-cond@v1
-        id: pck_install
-        with:
-          cond: ${{ matrix.python-version == "2.7" }}
-          if_true: "pip install flake8==2.6.2"
-          if_false: "pip install flake8"
+      - name: Install Flake for python2
+        if: ${{ matrix.python-version >= 2.7 && matrix.python-version < 3.0 }}
+        run: pip install flake8==2.6.2
+      - name: Install Flake for python3
+        if: ${{ matrix.python-version >= 3.0 }}
+        run: pip install flake8
+      - name: Install res
         run: |
-          # pip install flake8
-          ${{ steps.pck_install.outputs.value }}
           # install package
           python setup.py install
           echo "$(pip --version)" 
