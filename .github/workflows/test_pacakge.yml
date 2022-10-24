@@ -19,7 +19,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Flake for python2
         if: ${{ matrix.python-version < 3.0 }}
-        run: pip install flake8==2.6.2
+        run: |
+          pip install flake8==2.6.2
+          pip install setuptools==2.0
       - name: Install Flake for python3
         if: ${{ matrix.python-version >= 3.0 }}
         run: pip install flake8
@@ -38,7 +40,6 @@ jobs:
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Unit Tests
-        working-directory: ../
         run: |
           pwd [-LP]
           ls -a
