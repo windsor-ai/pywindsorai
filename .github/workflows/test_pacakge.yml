@@ -4,13 +4,11 @@ on: [workflow_dispatch, pull_request]
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
         python-version: ["2.7", "3.7", "3.8", "3.9", "3.10"]
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
@@ -28,7 +26,6 @@ jobs:
         run: pip install flake8
       - name: Install PyWindsorAI
         run: |
-          # install package
           python setup.py install
           echo "$(pip --version)" 
           echo "$(python --version)" 
@@ -39,11 +36,6 @@ jobs:
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Unit Tests
-        run: |
-          pwd [-LP]
-          ls -a
-          which python
-          which python2
-          python -m unittest discover test
+        run: python -m unittest discover test
         env:
           WINDSOR_TOKEN: ${{ secrets.WINDSOR_TOKEN }}
