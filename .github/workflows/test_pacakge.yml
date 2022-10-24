@@ -38,6 +38,8 @@ jobs:
       - name: Unit Tests
         run: |
           pwd [-LP]
+          which python
+          which python2
           python -m unittest discover test
         env:
           WINDSOR_TOKEN: ${{ secrets.WINDSOR_TOKEN }}
