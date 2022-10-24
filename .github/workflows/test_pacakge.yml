@@ -23,8 +23,10 @@ jobs:
       - name: Install Flake for python3
         if: ${{ matrix.python-version >= 3.0 }}
         run: pip install flake8
-      - name: Install res
+      - name: Install rest of dependencies
+        working-directory: ../
         run: |
+          pwd [-LP]
           # install package
           python setup.py install
           echo "$(pip --version)" 
@@ -37,7 +39,6 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Unit Tests
         run: |
-          working-directory: ../
           pwd [-LP]
           which python
           which python2
