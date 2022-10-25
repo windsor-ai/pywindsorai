@@ -1,0 +1,30 @@
+name: "tagged-release"
+
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+jobs:
+  pre-release:
+    name: "Build and release on GitHub"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install package.
+        run: | 
+          python setup.py sdist --formats=gztar,zip
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            dist/*.tar.gz
+            dist/*.zip
