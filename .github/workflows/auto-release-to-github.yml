@@ -2,8 +2,8 @@ name: "tagged-release"
 
 on:
   push:
-    #branches:
-    #  - 'main'
+    branches:
+      - 'main'
   workflow_dispatch:
 
 jobs:
@@ -19,7 +19,6 @@ jobs:
       - name: Install package.
         run: | 
           python setup.py sdist --formats=gztar,zip
-          ls -a 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -27,5 +26,5 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            dist/*.gztar
+            dist/*.tar.gz
             dist/*.zip
