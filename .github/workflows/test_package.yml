@@ -1,4 +1,4 @@
-name: PyWindsorAI
+name: Test Package
 
 on: [workflow_dispatch, pull_request]
 
