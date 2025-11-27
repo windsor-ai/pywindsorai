@@ -83,7 +83,8 @@ class Client:
         """
         Fetch list of all available connectors.
         """
-        return self._get(path="list_connectors")
+        response = self._get(path="list_connectors")
+        return response.get("data", [])
 
     def get_connector_fields(self, connector: str) -> List[dict]:
         """
@@ -94,7 +95,8 @@ class Client:
         Returns:
             List of field definition dictionaries.
         """
-        return self._get(path=f"{connector}/fields")
+        response = self._get(path=f"{connector}/fields")
+        return response.get("data", [])
 
     def connectors(
         self,
