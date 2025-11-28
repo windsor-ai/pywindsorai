@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "windsor-ai"
+version = "0.1.0"
+description = "A Python Client and CLI for the Windsor.ai API"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "furkan", email = "furkanaldemir@gmail.com" }]
+keywords = ["windsor", "api", "client", "marketing", "data"]
+classifiers = [
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+]
+
+dependencies = ["requests>=2.25.1"]
+
+# "windsor" is the command to type in the terminal.
+[project.scripts]
+windsor = "windsor_ai.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/furkan/windsorai-python-sdk"
+Repository = "https://github.com/furkan/windsorai-python-sdk"
+
+[project.optional-dependencies]
+dev = ["pytest", "flake8", "black"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
